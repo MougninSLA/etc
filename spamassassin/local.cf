@@ -1,0 +1,18 @@
+rewrite_header Subject *****SPAM*****
+report_safe 0
+required_hits 5.0
+required_score 5.0
+ok_language fr en
+use_bayes 1
+bayes_auto_learn 1
+ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
+endif # Mail::SpamAssassin::Plugin::Shortcircuit
+
+include /var/lists/blacklist.cf
+include /var/lists/whitelist.cf
+
+use_dcc 1
+dcc_timeout 8
+dcc_home /var/spamd/
+dcc_path /usr/local/bin/dccproc
+add_header all DCC _DCCB_: _DCCR_

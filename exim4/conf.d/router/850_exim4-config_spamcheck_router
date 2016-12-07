@@ -1,0 +1,9 @@
+           spamcheck_router:
+               no_verify
+               check_local_user
+               # When to scan a message :
+               #   -   it isn't already flagged as spam
+               #   -   it isn't already scanned
+               condition = "${if and { {!def:h_X-Spam-Flag:} {!eq {$received_protocol}{spam-scanned}}} {1}{0}}"
+               driver = accept
+               transport = spamcheck

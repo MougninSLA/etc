@@ -1,0 +1,7 @@
+MAILDIR="/var/mail"
+
+:0fw
+| /usr/bin/clamassassin
+:0:
+* ^X-Virus-Status: Yes
+/var/mail/virus

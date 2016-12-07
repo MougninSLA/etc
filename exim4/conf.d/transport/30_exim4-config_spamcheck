@@ -1,0 +1,13 @@
+               spamcheck:
+                  debug_print = "T: spamassassin_pipe for $local_part@$domain"
+                  driver = pipe
+                  command = /usr/sbin/exim4 -oMr spam-scanned -bS
+                  use_bsmtp
+                  transport_filter = /usr/bin/spamc
+                  home_directory = "/tmp"
+                  current_directory = "/tmp"
+                  user = Debian-exim
+                  group = Debian-exim
+                  return_fail_output
+                  message_prefix =
+                  message_suffix =
