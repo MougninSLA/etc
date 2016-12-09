@@ -85,7 +85,14 @@ acl_check_data:
   #
   # exim4-daemon-heavy must be used for this section to work.
   #
-   deny
+warn set acl_m_greyfile = /var/mail/virus/${length_255:\
+  ${sg{$sender_host_address}{\N\.\d+$\N}{}},\
+  ${sg{$sender_address,$local_part@$domain}{\N[^\w.,=@-]\N}{} }} 
+ 
+  #deny
+  warn message = X-Redirect-To: /var/mail/virus/
+  #defer log_message = deny
+   # condition =  ${run{/usr/bin/touch $acl_m_greyfile}}
      malware = *
      message = This message was detected as possible malware ($malware_name).
      log_message = $sender_host_address tried sending $malware_name

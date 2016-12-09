@@ -4,7 +4,8 @@ procmail:
   driver = accept
   domains = +local_domains
   check_local_user
-  transport = procmail_pipe
+  #transport = procmail_pipe
+  transport =  remote_smtp_smarthost
   # emulate OR with "if exists"-expansion
   require_files = ${local_part}:\
                   ${if exists{/etc/procmailrc}\

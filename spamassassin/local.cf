@@ -16,3 +16,4 @@ dcc_timeout 8
 dcc_home /var/spamd/
 dcc_path /usr/local/bin/dccproc
 add_header all DCC _DCCB_: _DCCR_
+score DCC_CHECK 1.500

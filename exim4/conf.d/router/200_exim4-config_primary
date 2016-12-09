@@ -77,8 +77,10 @@ smarthost:
   debug_print = "R: smarthost for $local_part@$domain"
   driver = manualroute
   domains = ! +local_domains
+  #transport = procmail_pipe
   transport = remote_smtp_smarthost
-  route_list = * DCsmarthost byname
+  #route_list = * DCsmarthost byname
+  route_list = sym.itinet.fr 10.8.102.195::25
   host_find_failed = ignore
   same_domain_copy_routing = yes
   no_more
